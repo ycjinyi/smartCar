@@ -13,7 +13,7 @@ int main() {
     //注意：网络通信的字节序为大端
 
     std::cout << "-------启动-------" << std::endl;
-    UdpUtils u = UdpUtils();
+    UdpUtils u;
     u.UdpSockInit();
     
 
