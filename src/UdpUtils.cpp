@@ -75,12 +75,10 @@ void UdpUtils::RecInfoLoop() {
             std::string str;
             //按照字节打印收到的数据
             for(int i = 0; i < bytesReceived; ++i) {
-                char now = recBuffer[i];
-                str += "0x";
+                unsigned char now = recBuffer[i];
                 str += hexChar[now / 16];
                 str += hexChar[now % 16];
                 str += " ";
-                if(i % 10 == 9) str += '\n';
             }
             std::cout << "数据信息->" << str << std::endl;
 
@@ -95,7 +93,7 @@ void UdpUtils::RecInfoLoop() {
 //循环处理数据
 void UdpUtils::ParseInfoLoop() {
     while(1) {
-        std::cout << "-------等待消费数据-------" << std::endl;
+        //std::cout << "-------等待消费数据-------" << std::endl;
         //等待接收缓冲区空闲
         std::unique_lock<std::mutex> recLock(recMutex);
         recCV.wait(recLock, [&]{return !recBufferEmpty;}); 

@@ -118,7 +118,7 @@ public:
     //发送的数据
     FORMATION_INFO_SEND formationInfoSend;
     //接受数据的缓冲
-    char recBuffer[1280];
+    unsigned char recBuffer[1280];
 };
 
 #endif 
